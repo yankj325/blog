@@ -1,0 +1,40 @@
+{{include './common/header.html'}}
+
+<div class="content">
+    <div class="content_resize">
+        <div class="mainbar">
+            {{each data.list item}}
+            <div class="article">
+                <h2><a href="/article/{{item.id}}">{{item.title}}</a></h2>
+                <div class="clr"></div>
+                <p>张三<span>&nbsp;&bull;&nbsp</span>{{item.createdAt}}</p>
+                <div class="clr"></div>
+                {{item.desc}}
+                <p><a href="/article/{{item.id}}">阅读更多</a></p>
+            </div>
+            {{/each}}
+            <div class="article" style="padding:5px 20px 2px 20px;background: none;border: 0;">
+                <p>
+                   <span class="button">
+                       {{if data.page > 1}}
+                       <a href="?page={{data.page - 1}}" class="active">上一页</a>
+                       {{else}}
+                       <a href="" class="disabled">上一页</a>
+                       {{/if}}
+                       <a href="" class="disabled">当前第{{data.page}}页</a>
+                       {{if data.page < data.pageCount}}
+                       <a href="?page={{data.page + 1}}" class="active">下一页</a>
+                       {{else}}
+                       <a href="" class="disabled">下一页</a>
+                       {{/if}}
+                   </span>
+                </p>
+            </div>
+        </div>
+        {{include './common/sidebar.html'}}
+
+    </div>
+</div>
+
+{{include './common/footer.html'}}
+
